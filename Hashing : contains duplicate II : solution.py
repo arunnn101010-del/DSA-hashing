@@ -1,1 +1,26 @@
+# Promblem - contains duplicate II 
+# Approach - hashing 
+# Time and space complexity - 0(n) & 0(n) 
+# Leetcode and diffculty level - 219 & easy 
+class Solution {
+public:
+    bool containsNearbyDuplicate(vector<int>& nums, int k) {
+
+        unordered_map<int, int> mp;
+
+        for (int i = 0; i < nums.size(); i++) {
+
+            if (mp.find(nums[i]) != mp.end()) {
+
+                if (i - mp[nums[i]] <= k) {
+                    return true;
+                }
+            }
+
+            mp[nums[i]] = i;
+        }
+
+        return false;
+    }
+};
 
